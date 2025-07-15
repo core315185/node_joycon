@@ -1,5 +1,5 @@
 const HID = require("node-hid");
-const robots = require("robotjs");
+const { keyboard, Key } = require("@nut-tree-fork/nut-js");
 
 const VID = 0x057e; // Nintendo
 const PID_L = 0x2006; // Joy-Con L
@@ -56,28 +56,20 @@ joycon.on("data", (buf) => {
   const now = buttons & 0x0f;
   const rising = ~prev & now; // 押下関連のフラグ
   if (rising & BUTTON_BITS['A']) {
-    robots.keyTap('a');
+    keyboard.type(Key.A);
     console.log("A ボタン押下");
   }
   if (rising & BUTTON_BITS['B']) {
-    robots.keyTap('b');
+    keyboard.type(Key.B);
     console.log("B ボタン押下");
   }
   if (rising & BUTTON_BITS['X']) {
-    robots.keyTap('x');
+    keyboard.type(Key.X);
     console.log("X ボタン押下");
   }
   if (rising & BUTTON_BITS['Y']) {
-    robots.keyTap('y');
+    keyboard.type(Key.Y);
     console.log("Y ボタン押下");
-  }
-  if (rising & BUTTON_BITS['R']) {
-    robots.keyTap('r');
-    console.log("R ボタン押下");
-  }
-  if (rising & BUTTON_BITS['L']) {
-    robots.keyTap('l');
-    console.log("L ボタン押下");
   }
   prev = now;
 });

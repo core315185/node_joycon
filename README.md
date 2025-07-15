@@ -10,7 +10,8 @@
 3. 以下のコマンドをターミナルで実行してください。
 
 ```shell
-npm install node-hid robotjs
+npm install node-hid
+npm install @nut-tree-fork/nut-js
 ```
 
 4. JoyconとPCを接続します。
